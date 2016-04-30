@@ -6,6 +6,7 @@ package com.theironyard.drawarama;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,14 +36,34 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         paper = (SurfaceView) findViewById(R.id.paper);
         paper.setOnTouchListener(this);
+
+        //paint setting
+
+        paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setStrokeWidth(10);
+        paint.setStyle(Paint.Style.STROKE);
+
+
+
     }
 
     //touch event
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        bitmap.setPixel(3, 3, 234);
-        System.out.println("touch!");
+
+        //gets touch coordinates
+
+        float x = motionEvent.getX();
+        float y = motionEvent.getY();
+
+        if (x > 0 && y > 0) {
+
+            System.out.println("touch!");
+            System.out.println(x);
+            System.out.println(y);
+        }
         return false;
     }
 }
